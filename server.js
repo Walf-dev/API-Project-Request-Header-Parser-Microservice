@@ -10,6 +10,7 @@ var app = express();
 var cors = require('cors');
 app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
 
+
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -21,14 +22,10 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/api/whoami", (req, res) => {
-var ipadress = req.clientIp;
-var language = req.acceptsLanguages();
-var software=req.get("User-Agent");
- res.json({
- ipadress: ipadress,
- language:language[0],
- software:software
- });
+  const ipAdd = req.headers['x-forwarded-for'].split(',')[0];
+  const language = req.headers["accept-language"];
+  const software = req.headers["user-agent"]
+  res.json({ ipaddress: ipAdd, language: language, software: software });
 });
 
 

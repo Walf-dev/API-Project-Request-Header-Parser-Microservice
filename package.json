@@ -1,14 +1,17 @@
 {
-  "name": "Request_Header_Parser_Microservice",
+  "name": "Request_Header_Parser",
   "version": "0.0.1",
-  "description": "API project for freeCodeCamp",
+  "description": "API Project: Request Header Parser Microservice",
+  "author": "Wagni_Fredoly",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^5.0.0-alpha.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.1",
+    "whoami": "^0.0.3",
+    "request-ip": "^2.1.3"
   },
   "engines": {
     "node": "4.4.5"
