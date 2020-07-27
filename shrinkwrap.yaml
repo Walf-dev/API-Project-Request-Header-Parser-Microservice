@@ -1,6 +1,8 @@
 dependencies:
   cors: 2.8.5
   express: 5.0.0-alpha.8
+  request-ip: 2.1.3
+  whoami: 0.0.3
 packages:
   /accepts/1.3.7:
     dependencies:
@@ -223,6 +225,10 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==
+  /is_js/0.9.0:
+    dev: false
+    resolution:
+      integrity: sha1-CrlFQFArp6+iTIVqqYVWFmnpxS0=
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -336,6 +342,12 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-4Oz8DUIwdvoa5qMJelxipzi/iJIi40O5cGV1wNYp5hvZP8ZN0T+jiNkL0QepXs+EsQ9XJ8ipEDoiH70ySUJP3Q==
+  /request-ip/2.1.3:
+    dependencies:
+      is_js: 0.9.0
+    dev: false
+    resolution:
+      integrity: sha512-J3qdE/IhVM3BXkwMIVO4yFrvhJlU3H7JH16+6yHucadT4fePnR8dyh+vEs6FIx0S2x5TCt2ptiPfHcn0sqhbYQ==
   /router/2.0.0-alpha.1:
     dependencies:
       array-flatten: 2.1.1
@@ -397,6 +409,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
+  /shelljs/0.3.0:
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    hasBin: true
+    resolution:
+      integrity: sha1-NZbmMHp4FUT1kfN9phg2DzHbV7E=
   /statuses/1.5.0:
     dev: false
     engines:
@@ -436,9 +455,19 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+  /whoami/0.0.3:
+    dependencies:
+      shelljs: 0.3.0
+    dev: false
+    engines:
+      node: '>= 0.10.0'
+    resolution:
+      integrity: sha1-atgz7AOp2V5jh13tzJPRUZgXcQ0=
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
-  cors: ^2.8.5
+  cors: ^2.8.1
   express: ^5.0.0-alpha.2
+  request-ip: ^2.1.3
+  whoami: ^0.0.3
