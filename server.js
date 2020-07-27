@@ -1,47 +1,16 @@
-// server.js
-// where your node app starts
+var express = require('express')
+var app = express()
+var useragent = require('express-useragent');
 
-// init project
-var express = require('express');
-var app = express();
-// enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
-// so that your API is remotely testable by FCC 
-var cors = require('cors');
-app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
-const requestIp = require('request-ip');
-
-// inside middleware handler
-var ipMiddleware = function(req, res, next) {
- const clientIp = requestIp.getClientIp(req); 
- next();
-};
-//As Connect Middleware
-app.use(requestIp.mw());
-
-
-// your first API endpoint... 
-app.get('/api/whoami', (req, res) => {
-var ip= req.clientIp;
-var language = req.acceptsLanguages();
-var software=req.get('User-Agent');
- res.send({
- ipadress: ip,
- language:language[0],
- software:software
- });
-  });
- 
-
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
-
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+app.use(useragent.express());
+app.get('/', function(req, res){
+    res.json({ip: req.headers['x-forwarded-for'],
+              language: req.headers["accept-language"].toString().split(',')[0],
+              browser: req.useragent.browser+' '+req.useragent.version,
+              os: req.useragent.os,
+              platform: req.useragent.platform,
+              
+                });
 });
 
-
-// listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-console.log('Your app is listening on port ' + listener.address().port);
-});
+app.listen(process.env.PORT || 8080)
